@@ -1,6 +1,6 @@
 # Omniauth::Nationbuilder
 
-TODO: Write a gem description
+Strategy to authenticate with Nationbuilder in OmniAuth.
 
 ## Installation
 
@@ -18,7 +18,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Here's an example for adding the middleware to a Rails app in config/initializers/omniauth.rb:
+
+	Rails.application.config.middleware.use OmniAuth::Builder do
+	  provider :nationbuilder, ENV["NATIONBUILDER_CLIENT_ID"], ENV["NATIONBUILDER_CLIENT_SECRET"]
+	end
+
+Because every nation has it's own slug, and this may be configured at run time if you are supporting authorisation of multiple nations, this is passed by a url parameter.
+
+To authenticate your nation, use
+
+	 /auth/nationbuilder?nation_slug=<YOUR NATIONS SLUG>
+
+
+## Auth Hash
+
+Here's an example of an authentication hash available in the callback by accessing request.env["omniauth.auth"]:
+
+	{
+	  :provider => "nationbuilder",
+	  :uid => "YOUR NATIONS SLUG",
+	  :credentials => {
+		:token => "token-string",
+		:expires => false 
+	  },
+	  :extra => {
+		:token_type => "bearer",
+		:created_at => 1465867529,
+		:access_token => "token-string",
+		:refresh_token => nil,
+		:expires_at => nil
+	  }
+	}
 
 ## Contributing
 
