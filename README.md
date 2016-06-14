@@ -20,9 +20,11 @@ Or install it yourself as:
 
 Here's an example for adding the middleware to a Rails app in config/initializers/omniauth.rb:
 
-	Rails.application.config.middleware.use OmniAuth::Builder do
-	  provider :nationbuilder, ENV["NATIONBUILDER_CLIENT_ID"], ENV["NATIONBUILDER_CLIENT_SECRET"]
-	end
+````ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :nationbuilder, ENV["NATIONBUILDER_CLIENT_ID"], ENV["NATIONBUILDER_CLIENT_SECRET"]
+end
+````
 
 Because every nation has it's own slug, and this may be configured at run time if you are supporting authorisation of multiple nations, this is passed by a url parameter.
 
@@ -35,6 +37,7 @@ To authenticate your nation, use
 
 Here's an example of an authentication hash available in the callback by accessing request.env["omniauth.auth"]:
 
+````ruby
 	{
 	  :provider => "nationbuilder",
 	  :uid => "YOUR NATIONS SLUG",
@@ -50,6 +53,7 @@ Here's an example of an authentication hash available in the callback by accessi
 		:expires_at => nil
 	  }
 	}
+````
 
 ## Contributing
 
