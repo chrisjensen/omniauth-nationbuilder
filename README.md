@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chrisjensen/omniauth-nationbuilder.svg?branch=master)](https://travis-ci.org/chrisjensen/omniauth-nationbuilder)
+
 # Omniauth::Nationbuilder
 
 Strategy to authenticate with Nationbuilder in OmniAuth.
