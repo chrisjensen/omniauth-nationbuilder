@@ -37,14 +37,19 @@ module OmniAuth
       # one hasn't been supplied, and insert the slug into the site url
       def request_phase
         if slug
-          session["omniauth.nationbuilder.slug"] = slug
-          options.client_options[:site] = 'https://' + slug + '.nationbuilder.com'
+          # Store slug on the session
+          session["omniauth.nationbuilder.slug"] = options.client_options[:slug] = slug
           super
         else
           get_slug
         end
       end
       
+      def callback_phase
+        options.client_options[:slug] = session.delete("omniauth.nationbuilder.slug")
+        super
+      end
+            
       # These are called after authentication has succeeded. If
       # possible, you should try to set the UID without making
       # additional calls (if the user id is returned with the token
