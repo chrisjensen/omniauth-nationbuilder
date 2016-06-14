@@ -16,4 +16,10 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  gem.add_runtime_dependency 'omniauth', '>= 1.1.1'
+  gem.add_runtime_dependency 'omniauth-oauth2', '>= 1.3.1'
+
+  gem.add_development_dependency 'rspec', '>= 2.14.0'
+  gem.add_development_dependency 'rake'
 end

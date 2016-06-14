@@ -1,7 +1,1 @@
-require "omniauth-nationbuilder/version"
-
-module Omniauth
-  module Nationbuilder
-    # Your code goes here...
-  end
-end
+require File.join('omniauth', 'nationbuilder')
