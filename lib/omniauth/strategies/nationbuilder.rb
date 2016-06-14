@@ -55,11 +55,9 @@ module OmniAuth
       # additional calls (if the user id is returned with the token
       # or as a URI parameter). This may not be possible with all
       # providers.
-      uid { session["omniauth.nationbuilder.slug"] }
-
-      def raw_info
-        @raw_info ||= access_token.get('/me').parsed
-      end
+      uid { options.client_options[:slug] }
+      
+      extra { access_token }
     end
   end
 end
