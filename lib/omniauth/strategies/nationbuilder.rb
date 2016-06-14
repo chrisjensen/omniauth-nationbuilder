@@ -20,7 +20,13 @@ module OmniAuth
         f.to_response
       end
       
-      # Returns the slug, nil if one has not been specified
+      # Configure site before super initialises the OAuth2 Client
+      def client
+        options.client_options[:site] = 'https://' + options.client_options[:slug] + '.nationbuilder.com'
+        super
+      end
+      
+      # Returns the slug, nil if one has not been specified anywhere
       def slug
         s = options.nation_slug || request.params[options.slug_param.to_s]
         s = nil if s == ''
