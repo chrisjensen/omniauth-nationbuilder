@@ -11,12 +11,6 @@ module OmniAuth
 	  option :nation_slug, nil
       option :slug_param, 'nation_slug'
       
-	  def authorize_params
-		super.tap do |params|
-          params[:site] = 'https://' + options.nation_slug + 'nationbuilder.com'
-        end	  	
-	  end  
-
 	  # Build a form to get the nations slug if one has not been supplied
 	  def get_slug
         f = OmniAuth::Form.new(:title => 'NationBuilder Authentication')
@@ -30,16 +24,21 @@ module OmniAuth
       def slug
         s = options.nation_slug || request.params[options.slug_param.to_s]
         s = nil if s == ''
-        session["omniauth.nationbuilder.slug"] = s if s
         s
       end
       
       # Override the normal OAuth request_phase to get a slug from the user if
-      # one hasn't been supplied
+      # one hasn't been supplied, and insert the slug into the site url
       def request_phase
-        slug ? super : get_slug
+        if slug
+          session["omniauth.nationbuilder.slug"] = slug
+          options.client_options[:site] = 'https://' + slug + '.nationbuilder.com'
+          super
+        else
+          get_slug
+        end
       end
-
+      
       # These are called after authentication has succeeded. If
       # possible, you should try to set the UID without making
       # additional calls (if the user id is returned with the token

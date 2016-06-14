@@ -12,7 +12,7 @@ describe OmniAuth::Strategies::Nationbuilder, :type => :strategy do
   end
 
   describe '/auth/nationbuilder' do
-    context 'with no slug' do
+    context 'with nation_slug unset' do
 		before do
 		  get '/auth/nationbuilder'
 		end
@@ -28,6 +28,18 @@ describe OmniAuth::Strategies::Nationbuilder, :type => :strategy do
 		it 'should prompt for nation slug' do
 		  expect(last_response.body).to match %r{<input[^>]*nation_slug}
 		end
+	end
+	
+	context 'with nation_slug' do
+	  let(:slug) { 'mynation' }
+	  let(:redirect_url) { 'https://' + slug + '.nationbuilder.com' }
+    
+      it 'should redirect to the NationBuilder oauth url' do
+        puts "slug: " + slug
+        get '/auth/nationbuilder?nation_slug=' + slug
+        last_response.should be_redirect
+        last_response.headers['Location'].should =~ %r{^#{redirect_url}.*}
+      end
 	end
   end
 end
