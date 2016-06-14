@@ -42,13 +42,13 @@ Here's an example of an authentication hash available in the callback by accessi
 	  :provider => "nationbuilder",
 	  :uid => "YOUR NATIONS SLUG",
 	  :credentials => {
-		:token => "token-string",
+		:token => "f4d3b3c9528672fa15181dfd9e63a793f4e754186bbeaad7030b053e1398b84f",
 		:expires => false 
 	  },
 	  :extra => {
 		:token_type => "bearer",
 		:created_at => 1465867529,
-		:access_token => "token-string",
+		:access_token => "f4d3b3c9528672fa15181dfd9e63a793f4e754186bbeaad7030b053e1398b84f",
 		:refresh_token => nil,
 		:expires_at => nil
 	  }
