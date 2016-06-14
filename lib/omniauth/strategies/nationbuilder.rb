@@ -9,11 +9,11 @@ module OmniAuth
 	  # We need the nation slug from the user and will use that as the unique id
 	  # for this strategy
 	  option :nation_slug, nil
-      option :slug_param, 'nationslug'
+      option :slug_param, 'nation_slug'
       
 	  def authorize_params
 		super.tap do |params|
-          params[:site] = 'https://' . options.nation_slug . 'nationbuilder.com'
+          params[:site] = 'https://' + options.nation_slug + 'nationbuilder.com'
         end	  	
 	  end  
 
