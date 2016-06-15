@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/omniauth-nationbuilder.svg)](https://badge.fury.io/rb/omniauth-nationbuilder)
 [![Build Status](https://travis-ci.org/chrisjensen/omniauth-nationbuilder.svg?branch=master)](https://travis-ci.org/chrisjensen/omniauth-nationbuilder)
 
 # Omniauth::Nationbuilder
