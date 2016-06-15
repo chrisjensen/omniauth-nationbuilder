@@ -11,7 +11,8 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Omniauth strategy for NationBuilder using OAuth2}
   gem.summary       = %q{Omniauth strategy for NationBuilder using OAuth2}
   gem.homepage      = "https://github.com/chrisjensen/omniauth-nationbuilder"
-
+  gem.licenses      = ['MIT']
+  
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
