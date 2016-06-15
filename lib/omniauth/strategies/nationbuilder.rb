@@ -51,6 +51,12 @@ module OmniAuth
         super
       end
             
+      # Nationbuilder fails with an invalid callback if the 
+      # query string is passed along
+      def callback_url
+        full_host + script_name + callback_path
+      end
+
       # These are called after authentication has succeeded. If
       # possible, you should try to set the UID without making
       # additional calls (if the user id is returned with the token

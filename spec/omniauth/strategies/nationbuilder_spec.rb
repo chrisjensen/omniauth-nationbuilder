@@ -51,6 +51,21 @@ describe OmniAuth::Strategies::Nationbuilder, :type => :strategy do
 	end
   end
   
+  describe 'callback_url' do
+	  let(:nation_slug) { 'nationofkinggeorge' }
+
+	before do
+		allow(subject).to receive(:request) { double('Rack::Test::Request', {:params => {'nation_slug' => nation_slug }, :query_string => 'nation_slug=' + nation_slug, :env => { }}) }
+
+		allow(subject).to receive(:full_host) { 'example.org' }
+		allow(subject).to receive(:script_name) { '' }
+	end
+
+	it "should not include query string" do
+	  expect(subject.callback_url).to eq('example.org/auth/nationbuilder/callback')
+	end
+  end
+
   ### NOTE ###
   # This section involves heavy stubbing of Omniauth and OAuth methods to verify
   # a small amount of code.
