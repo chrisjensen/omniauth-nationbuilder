@@ -5,6 +5,9 @@
 
 Strategy to authenticate with Nationbuilder in OmniAuth.
 
+This strategy can be used to authorise your application to use the NationBuilder API.
+At this stage it is not possible to use it to authenticate your NationBuilder supporters.
+
 ## Installation
 
 Add this line to your application's Gemfile:
