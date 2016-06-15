@@ -23,7 +23,8 @@ module OmniAuth
       # Configure site before super initialises the OAuth2 Client
       def client
         options.client_options[:site] = 'https://' + options.client_options[:slug] + '.nationbuilder.com'
-        super
+		log :debug, "Nation to authorise " + deep_symbolize(options.client_options).inspect
+		super
       end
       
       # Returns the slug, nil if one has not been specified anywhere
